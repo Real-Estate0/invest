@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChainWealth - Bitcoin Mining & Investment</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #f0f0f0;
+    line-height: 1.6;
+  }
+  header {
+    padding: 40px 20px;
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+  }
+  header h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+  header p {
+    font-weight: 300;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  .btn-primary {
+    background: #f7931a; /* Bitcoin orange */
+    color: #111;
+    font-weight: 600;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: #ffb347;
+  }
+
+  section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+  }
+  .feature-box {
+    background: rgba(255 255 255 / 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    flex: 1 1 280px;
+    box-shadow: 0 0 20px #f7931a44;
+    transition: transform 0.3s ease;
+  }
+  .feature-box:hover {
+    transform: translateY(-10px);
+  }
+  .feature-box h3 {
+    color: #f7931a;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  .feature-box p {
+    font-weight: 300;
+  }
+
+  /* New sections */
+
+  .how-it-works {
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 40px 30px;
+  }
+  .how-it-works h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #f7931a;
+  }
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+  }
+  .step {
+    background: rgba(255 255 255 / 0.1);
+    flex: 1 1 250px;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 0 15px #f7931a33;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .step:hover {
+    transform: translateY(-10px);
+  }
+  .step-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f7931a;
+    margin-bottom: 15px;
+  }
+  .step h3 {
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  .step p {
+    font-weight: 300;
+  }
+
+  .plans {
+    margin-top: 30px;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .plan-card {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 15px;
+    box-shadow: 0 0 25px #f7931a44;
+    flex: 1 1 280px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .plan-card:hover {
+    transform: translateY(-10px);
+  }
+  .plan-title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f7931a;
+  }
+  .plan-price {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  .plan-duration {
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .plan-features {
+    list-style: none;
+    margin-bottom: 25px;
+    font-weight: 300;
+    text-align: left;
+    padding-left: 20px;
+  }
+  .plan-features li {
+    margin-bottom: 10px;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    margin-top: 60px;
+    background: rgba(0,0,0,0.5);
+    padding: 40px 30px;
+    border-radius: 20px;
+  }
+  .testimonials h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #f7931a;
+    margin-bottom: 40px;
+  }
+  .testimonial-item {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 40px;
+  }
+  .testimonial-item::before {
+    content: "“";
+    font-size: 4rem;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    color: #f7931a;
+  }
+  .testimonial-author {
+    font-weight: 600;
+    font-style: normal;
+    margin-top: 10px;
+    text-align: right;
+    color: #f7931a;
+  }
+
+  /* FAQ */
+  .faq {
+    margin-top: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .faq h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #f7931a;
+    margin-bottom: 40px;
+  }
+  .faq-item {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 20px 25px;
+    box-shadow: 0 0 15px #f7931a33;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .faq-item:hover {
+    background: rgba(255 255 255 / 0.2);
+  }
+  .faq-question {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .faq-answer {
+    font-weight: 300;
+    display: none;
+    padding-left: 10px;
+  }
+
+  /* Call to action */
+  .cta {
+    background: #f7931a;
+    color: #111;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-radius: 30px;
+  }
+  .cta h2 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .cta a {
+    background: #111;
+    color: #f7931a;
+    font-weight: 700;
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    display: inline-block;
+  }
+  .cta a:hover {
+    background: #333;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: #888;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .features, .steps, .plans {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ChainWealth</h1>
+  <p>Unlock your financial future with professional Bitcoin mining and investment opportunities.</p>
+  <a href="register.html" class="btn-primary">Register Now</a>
+</header>
+
+<section>
+  <h2 style="text-align:center; margin-bottom:40px; font-weight:600; font-size:2rem;">Why Choose ChainWealth?</h2>
+  <div class="features">
+    <div class="feature-box">
+      <h3>Reliable Mining</h3>
+      <p>State-of-the-art Bitcoin mining infrastructure with guaranteed uptime and performance.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Secure Investments</h3>
+      <p>Your funds are protected with industry-standard security protocols and transparent reporting.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Expert Support</h3>
+      <p>Dedicated customer support and direct access to investment advisors whenever you need help.</p>
+    </div>
+    <div class="feature-box">
+      <h3>High Returns</h3>
+      <p>Competitive ROI plans designed to maximize your profits with minimum risk.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Register Your Account</h3>
+      <p>Create your personal account on ChainWealth with a simple registration process.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Activate Membership</h3>
+      <p>Pay a one-time activation fee of $500 to start mining and investing.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Send Payment Proof</h3>
+      <p>Send your payment proof to our admin via Telegram for verification.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <h3>Access Your Dashboard</h3>
+      <p>Once verified, receive a personalized dashboard link to manage your investments.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 style="text-align:center; margin-bottom:40px; font-weight:600; font-size:2rem; color:#f7931a;">Investment Plans & Pricing</h2>
+  <div class="plans">
+    <div class="plan-card">
+      <div class="plan-title">Starter</div>
+      <div class="plan-price">$500</div>
+      <div class="plan-duration">Activation Fee</div>
+      <ul class="plan-features">
+        <li>Access to Mining Dashboard</li>
+        <li>Basic Investment Tools</li>
+        <li>Standard Support</li>
+      </ul>
+      <button class="btn-primary" disabled>Included</button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-title">Pro Miner</div>
+      <div class="plan-price">$5,000</div>
+      <div class="plan-duration">1 Year Plan</div>
+      <ul class="plan-features">
+        <li>Higher Mining Power</li>
+        <li>Advanced Analytics</li>
+        <li>Priority Support</li>
+      </ul>
+      <a href="#" class="btn-primary">Coming Soon</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-title">Elite Investor</div>
+      <div class="plan-price">$10,000+</div>
+      <div class="plan-duration">Custom Plan</div>
+      <ul class="plan-features">
+        <li>Dedicated Account Manager</li>
+        <li>Exclusive Mining Pools</li>
+        <li>Maximized Returns</li>
+      </ul>
+      <a href="#" class="btn-primary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2>What Our Investors Say</h2>
+  <div class="testimonial-item">
+    “ChainWealth transformed my approach to cryptocurrency investing. The mining platform is reliable and the returns are impressive.”
+    <div class="testimonial-author">- Sarah J.</div>
+  </div>
+  <div class="testimonial-item">
+    “The support team is amazing and helped me every step of the way. I highly recommend ChainWealth to anyone interested in Bitcoin mining.”
+    <div class="testimonial-author">- Mark T.</div>
+  </div>
+  <div class="testimonial-item">
+    “A professional and trustworthy platform with clear processes and great investment options.”
+    <div class="testimonial-author">- Emily R.</div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">What is the activation fee for?</div>
+    <div class="faq-answer">The $500 activation fee grants you access to our Bitcoin mining platform and investment dashboard.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">How do I send payment proof?</div>
+    <div class="faq-answer">You will send your payment proof via Telegram to our admin for verification.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">When will I get access to my dashboard?</div>
+    <div class="faq-answer">After verification of your payment proof, the admin will send you a personalized dashboard link.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">Is my investment safe?</div>
+    <div class="faq-answer">We use industry-standard security protocols to protect your funds and personal information.</div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>Ready to Start Your Bitcoin Investment Journey?</h2>
+  <a href="register.html">Create Your Account Now</a>
+</div>
+
+<footer>
+  &copy; 2025 ChainWealth. All rights reserved.
+</footer>
+
+<script>
+  function toggleFAQ(element) {
+    const answer = element.querySelector('.faq-answer');
+    if(answer.style.display === 'block') {
+      answer.style.display = 'none';
+    } else {
+      answer.style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>
